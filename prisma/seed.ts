@@ -23,8 +23,10 @@ async function main() {
   // Create garden products
   const products = [
     {
+      name: 'Organic Potting Soil',
       nameEn: 'Organic Potting Soil',
       nameNl: 'Biologische Potgrond',
+      description: 'High-quality organic potting soil enriched with nutrients. Perfect for all your potted plants and garden beds.',
       descriptionEn: 'High-quality organic potting soil enriched with nutrients. Perfect for all your potted plants and garden beds.',
       descriptionNl: 'Hoogwaardige biologische potgrond verrijkt met voedingsstoffen. Perfect voor al uw potplanten en tuinbedden.',
       price: 12.99,
@@ -33,8 +35,10 @@ async function main() {
       stock: 50
     },
     {
+      name: 'Garden Tool Set',
       nameEn: 'Garden Tool Set',
       nameNl: 'Tuingereedschap Set',
+      description: 'Complete 5-piece garden tool set including trowel, fork, pruner, and gloves. Durable stainless steel construction.',
       descriptionEn: 'Complete 5-piece garden tool set including trowel, fork, pruner, and gloves. Durable stainless steel construction.',
       descriptionNl: 'Compleet tuingereedschap set van 5 stuks inclusief schepje, vork, snoeischaar en handschoenen. Duurzame roestvrijstalen constructie.',
       price: 34.99,
@@ -43,8 +47,10 @@ async function main() {
       stock: 30
     },
     {
+      name: 'Sunflower Seeds',
       nameEn: 'Sunflower Seeds',
       nameNl: 'Zonnebloem Zaden',
+      description: 'Giant sunflower seeds that grow up to 3 meters tall. Easy to grow and perfect for beginners.',
       descriptionEn: 'Giant sunflower seeds that grow up to 3 meters tall. Easy to grow and perfect for beginners.',
       descriptionNl: 'Reuze zonnebloem zaden die tot 3 meter hoog groeien. Gemakkelijk te kweken en perfect voor beginners.',
       price: 3.99,
@@ -53,8 +59,10 @@ async function main() {
       stock: 100
     },
     {
+      name: 'Watering Can 10L',
       nameEn: 'Watering Can 10L',
       nameNl: 'Gieter 10L',
+      description: 'Large capacity watering can with comfortable grip and long spout for precise watering.',
       descriptionEn: 'Large capacity watering can with comfortable grip and long spout for precise watering.',
       descriptionNl: 'Gieter met grote capaciteit met comfortabele grip en lange tuit voor nauwkeurig gieten.',
       price: 18.50,
@@ -63,8 +71,10 @@ async function main() {
       stock: 25
     },
     {
+      name: 'Tomato Plant',
       nameEn: 'Tomato Plant',
       nameNl: 'Tomatenplant',
+      description: 'Healthy tomato plant ready for transplanting. Produces delicious cherry tomatoes.',
       descriptionEn: 'Healthy tomato plant ready for transplanting. Produces delicious cherry tomatoes.',
       descriptionNl: 'Gezonde tomatenplant klaar voor het verplanten. Produceert heerlijke cherrytomaten.',
       price: 6.99,
@@ -73,8 +83,10 @@ async function main() {
       stock: 40
     },
     {
+      name: 'Garden Hose 25m',
       nameEn: 'Garden Hose 25m',
       nameNl: 'Tuinslang 25m',
+      description: 'Flexible and durable garden hose with spray nozzle. Anti-kink design for easy handling.',
       descriptionEn: 'Flexible and durable garden hose with spray nozzle. Anti-kink design for easy handling.',
       descriptionNl: 'Flexibele en duurzame tuinslang met sproeikop. Anti-knik ontwerp voor gemakkelijke bediening.',
       price: 29.99,
@@ -83,8 +95,10 @@ async function main() {
       stock: 20
     },
     {
+      name: 'Rose Bush',
       nameEn: 'Rose Bush',
       nameNl: 'Rozenstruik',
+      description: 'Beautiful red rose bush. Hardy perennial that blooms from spring to fall.',
       descriptionEn: 'Beautiful red rose bush. Hardy perennial that blooms from spring to fall.',
       descriptionNl: 'Mooie rode rozenstruik. Winterharde vaste plant die bloeit van lente tot herfst.',
       price: 24.99,
@@ -93,8 +107,10 @@ async function main() {
       stock: 15
     },
     {
+      name: 'Organic Fertilizer',
       nameEn: 'Organic Fertilizer',
       nameNl: 'Biologische Meststof',
+      description: 'All-purpose organic fertilizer for vegetables, flowers, and trees. Slow-release formula.',
       descriptionEn: 'All-purpose organic fertilizer for vegetables, flowers, and trees. Slow-release formula.',
       descriptionNl: 'Universele biologische meststof voor groenten, bloemen en bomen. Langzaam afgevende formule.',
       price: 15.99,
@@ -103,8 +119,10 @@ async function main() {
       stock: 60
     },
     {
+      name: 'Herb Garden Kit',
       nameEn: 'Herb Garden Kit',
       nameNl: 'Kruidentuin Set',
+      description: 'Complete herb garden starter kit with basil, parsley, and mint seeds. Includes pots and soil.',
       descriptionEn: 'Complete herb garden starter kit with basil, parsley, and mint seeds. Includes pots and soil.',
       descriptionNl: 'Compleet kruidentuin starter kit met basilicum, peterselie en munt zaden. Inclusief potten en aarde.',
       price: 19.99,
@@ -113,8 +131,10 @@ async function main() {
       stock: 35
     },
     {
+      name: 'Garden Kneeler Pad',
       nameEn: 'Garden Kneeler Pad',
       nameNl: 'Tuin Knielkussen',
+      description: 'Comfortable foam kneeling pad for gardening. Water-resistant and easy to clean.',
       descriptionEn: 'Comfortable foam kneeling pad for gardening. Water-resistant and easy to clean.',
       descriptionNl: 'Comfortabel schuim knielkussen voor tuinieren. Waterbestendig en gemakkelijk schoon te maken.',
       price: 14.99,
@@ -123,8 +143,10 @@ async function main() {
       stock: 45
     },
     {
+      name: 'Lavender Plant',
       nameEn: 'Lavender Plant',
       nameNl: 'Lavendelplant',
+      description: 'Aromatic lavender plant perfect for borders and containers. Attracts bees and butterflies.',
       descriptionEn: 'Aromatic lavender plant perfect for borders and containers. Attracts bees and butterflies.',
       descriptionNl: 'Aromatische lavendelplant perfect voor borders en containers. Trekt bijen en vlinders aan.',
       price: 8.99,
@@ -133,8 +155,10 @@ async function main() {
       stock: 30
     },
     {
+      name: 'Compost Bin',
       nameEn: 'Compost Bin',
       nameNl: 'Compostbak',
+      description: 'Large capacity compost bin for turning garden waste into nutrient-rich compost.',
       descriptionEn: 'Large capacity compost bin for turning garden waste into nutrient-rich compost.',
       descriptionNl: 'Compostbak met grote capaciteit voor het omzetten van tuinafval in voedingsrijke compost.',
       price: 49.99,

@@ -5,7 +5,7 @@ import { useSession } from 'next-auth/react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Heart, ShoppingBag, ThumbsUp, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
+import { use } from 'react';
 
 interface Product {
   id: string;
@@ -21,8 +21,8 @@ interface Product {
   stock: number;
 }
 
-export default function ProductDetailPage() {
-  const params = useParams();
+export default function ProductDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params);
   const { data: session } = useSession();
   const { t, locale } = useLanguage();
   const [product, setProduct] = useState<Product | null>(null);
@@ -32,17 +32,17 @@ export default function ProductDetailPage() {
   const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
-    if (params.id) {
+    if (id) {
       fetchProduct();
       if (session) {
         checkUserData();
       }
     }
-  }, [params.id, session]);
+  }, [id, session]);
 
   const fetchProduct = async () => {
     try {
-      const res = await fetch(`/api/products/${params.id}`);
+      const res = await fetch(`/api/products/${id}`);
       const data = await res.json();
       setProduct(data);
     } catch (error) {
@@ -61,12 +61,12 @@ export default function ProductDetailPage() {
       
       if (likesRes.ok) {
         const likes = await likesRes.json();
-        setIsLiked(likes.some((l: any) => l.productId === params.id));
+        setIsLiked(likes.some((l: any) => l.productId === id));
       }
       
       if (wishlistRes.ok) {
         const wishlist = await wishlistRes.json();
-        setIsInWishlist(wishlist.some((w: any) => w.productId === params.id));
+        setIsInWishlist(wishlist.some((w: any) => w.productId === id));
       }
     } catch (error) {
       console.error('Error checking user data:', error);
@@ -81,7 +81,7 @@ export default function ProductDetailPage() {
     
     try {
       if (isLiked) {
-        await fetch(`/api/likes?productId=${params.id}`, {
+        await fetch(`/api/likes?productId=${id}`, {
           method: 'DELETE'
         });
         setIsLiked(false);
@@ -89,7 +89,7 @@ export default function ProductDetailPage() {
         await fetch('/api/likes', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ productId: params.id })
+          body: JSON.stringify({ productId: id })
         });
         setIsLiked(true);
       }
@@ -106,7 +106,7 @@ export default function ProductDetailPage() {
     
     try {
       if (isInWishlist) {
-        await fetch(`/api/wishlist?productId=${params.id}`, {
+        await fetch(`/api/wishlist?productId=${id}`, {
           method: 'DELETE'
         });
         setIsInWishlist(false);
@@ -114,7 +114,7 @@ export default function ProductDetailPage() {
         await fetch('/api/wishlist', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ productId: params.id })
+          body: JSON.stringify({ productId: id })
         });
         setIsInWishlist(true);
       }
@@ -133,7 +133,7 @@ export default function ProductDetailPage() {
       await fetch('/api/bag', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ productId: params.id, quantity })
+        body: JSON.stringify({ productId: id, quantity })
       });
       alert('Added to bag!');
     } catch (error) {

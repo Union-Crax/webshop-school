@@ -5,11 +5,12 @@ import { authOptions } from "@/lib/auth";
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const product = await prisma.product.findUnique({
-      where: { id: params.id }
+      where: { id }
     });
 
     if (!product) {
@@ -31,7 +32,7 @@ export async function GET(
 
 export async function PATCH(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await getServerSession(authOptions);
@@ -43,10 +44,11 @@ export async function PATCH(
       );
     }
 
+    const { id } = await params;
     const data = await req.json();
     
     const product = await prisma.product.update({
-      where: { id: params.id },
+      where: { id },
       data: {
         ...(data.name && { name: data.name }),
         ...(data.nameEn && { nameEn: data.nameEn }),
@@ -73,7 +75,7 @@ export async function PATCH(
 
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await getServerSession(authOptions);
@@ -85,8 +87,9 @@ export async function DELETE(
       );
     }
 
+    const { id } = await params;
     await prisma.product.delete({
-      where: { id: params.id }
+      where: { id }
     });
 
     return NextResponse.json({ success: true });
